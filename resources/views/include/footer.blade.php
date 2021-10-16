@@ -7,10 +7,12 @@
                                 <h4>About Us</h4>
                                 <hr>
                             </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took...</p>
-                            <a href="#" class="btn btn-default">Read More</a>
+                            @foreach ($sites as $site)
+                            @if ($site->site_key=='about')
+                            <p>{{ $site->site_value}}</p>
+                            <a href="{{ url('aboutus') }}" class="btn btn-default">Read More</a>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-3 col-md-6 col-xs-12">
@@ -19,12 +21,12 @@
                                 <h4>Quick Link</h4>
                                 <hr>
                                 <ul class="contact-details">
-                                <li> <a href="#">Home</a></li>
-                                <li> <a href="mailto:info@yoursite.com">About Us</a></li>
-                                <li> <a href="mailto:info@yoursite.com">Examination</a></li>
-                                <li> <a href="mailto:info@yoursite.com">Courses</a></li>
-                                <li> <a href="mailto:info@yoursite.com">Teacher</a></li>
-                                <li> <a href="mailto:info@yoursite.com">Pages</a></li>
+                                <li> <a href="{{ url('index') }}">Home</a></li>
+                                <li> <a href="{{ url('aboutus') }}">About Us</a></li>
+                                <li> <a href="{{ url('notices') }}">Examination</a></li>
+                                <li> <a href="{{ url('courses') }}">Courses</a></li>
+                                <li> <a href="{{ url('teachers') }}">Teacher</a></li>
+                                <li> <a href="{{ url('galleries') }}">Gallery</a></li>
                             </ul>
                             </div>
 
@@ -37,12 +39,21 @@
                                 <hr>
                             </div>
                             <ul class="contact-details">
-                                <li><i class="fa fa-link"></i> <a href="#">www.yoursite.com</a></li>
-                                <li><i class="fa fa-envelope"></i> <a
-                                        href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-                                <li><i class="fa fa-phone"></i> +90 123 45 67</li>
-                                <li><i class="fa fa-fax"></i> +90 123 45 68</li>
-                                <li><i class="fa fa-home"></i> INC 22 Elizabeth Str. Melbourne. Victoria 8777.</li>
+                                @foreach ($sites as $site)
+                                @if ($site->site_key=='website')
+                                <li><i class="fa fa-link"></i> <a href="{{ $site->site_value}}">{{ $site->site_value}}</a></li>
+                                @endif
+                                @endforeach
+                                @foreach ($sites as $site)
+                                @if ($site->site_key=='phone')
+                                <li><i class="fa fa-phone"></i> {{ $site->site_value}}</li>
+                                @endif
+                                @endforeach
+                                @foreach ($sites as $site)
+                                @if ($site->site_key=='address')
+                                <li><i class="fa fa-home"></i>{{ $site->site_value}}</li>
+                                @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -66,14 +77,14 @@
             <div class="container">
                 <div class="row">
                     <div class="text-left col-md-6">
-                        <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+                        <p><a target="_blank" href="https://www.templateshub.net">Xdezo Technologies</a></p>
                     </div>
                     <div class="text-right col-md-6">
-                        <ul class="list-inline">
+                        {{-- <ul class="list-inline">
                             <li><a href="#">Terms of Usage</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Sitemap</a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>

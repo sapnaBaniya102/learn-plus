@@ -10,8 +10,12 @@
                                 <span class="fa fa-bars"></span>
                             </button>
                             <div class="logo">
+                                @foreach ($sites as $site)
+                                @if ($site->site_key=='logo')
                                 <a class="navbar-brand" href="{{ url('index') }}"><img
-                                        src="{{ asset('asset/images/xlogo.png.pagespeed.ic.vap6Ukaf0i.png') }}" alt=""></a>
+                                        src="{{ asset('uploads/files/'.$site->imglink) }}" alt=""></a>
+                                        @endif
+                                        @endforeach
                             </div>
                         </div>
                         <div class="navbar-collapse collapse">
@@ -89,7 +93,7 @@
                                 </li>
 
                                 <li class="dropdown ttmenu-half"><a href="#" data-toggle="dropdown"
-                                        class="dropdown-toggle">Pages<b class="fa fa-angle-down"></b></a>
+                                        class="dropdown-toggle">Activities<b class="fa fa-angle-down"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="ttmenu-content">

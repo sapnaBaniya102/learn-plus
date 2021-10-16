@@ -29,11 +29,11 @@
             <ul class="option-set" data-option-key="filter">
               <li><a href="courses.php" class="selected" data-option-value="*"><i class="fa fa-filter"></i> All Courses</a>
               </li>
-              @foreach ($categories as $category)
+              {{-- @foreach ($categories as $category)
 
 
 <li><a href="{{ url('courses/'.$category->c_id) }}" >{{ $category->c_name }}</a></li>
-              @endforeach
+              @endforeach --}}
 
             </ul>
           </div>

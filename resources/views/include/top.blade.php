@@ -56,7 +56,11 @@
             <div class="container">
                 <div class="row">
                     <div class="text-left col-md-6">
-                        <p><i class="fa fa-graduation-cap"></i> Best learning management template for ever.</p>
+                        @foreach ($sites as $site)
+                        @if ($site->site_key=='logo')
+                        <p><i class="fa fa-graduation-cap"></i>{{ $site->site_value }}</p>
+                        @endif
+                        @endforeach
                     </div>
                     <div class="text-right col-md-6">
                         <ul class="list-inline">
