@@ -102,9 +102,9 @@ class WhyChooseUsController extends Controller
      * @param  \App\Models\Whychooseus  $whychooseus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WhyChooseUs $whychooseus)
+    public function destroy(WhyChooseUs $whychooseu)
     {
-        $whychooseus->delete();
+        $whychooseu->delete();
         return redirect('whychooseus')->with('delete', 'Deleted successfully');
     }
 

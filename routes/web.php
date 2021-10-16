@@ -68,7 +68,7 @@ Route::get('/index','App\Http\Controllers\IndexController@index');
 Route::get('/','App\Http\Controllers\IndexController@index');
 Route::get('/aboutus','App\Http\Controllers\IndexController@about_us');
 Route::get('/messages','App\Http\Controllers\IndexController@messages');
-Route::get('/planning','App\Http\Controllers\IndexController@planning');
+Route::get('/plannings','App\Http\Controllers\IndexController@planning');
 
 
 Route::get('/results','App\Http\Controllers\IndexController@results');

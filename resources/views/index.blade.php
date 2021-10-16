@@ -203,10 +203,10 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-6">
+                <div class="col-md-6 col-md-offset-5">
                     <div class="section-container nopadding">
                         <div class="textrotate">
-                            <ul class="bxslider">
+                            <ul class="bxslider pl-5">
                                 @foreach ($sites as $site)
                                 @if ($site->site_key=='who-we-are')
 
@@ -245,7 +245,7 @@
         <div class="row service-center funfactors">
             @foreach ($sites as $site)
             @if ($site->site_key=='counter')
-   <div class="col-md-3 col-sm-6">
+   <div class="col-md-3 col-sm-6" >
                 <div class="feature-list">
                     <i class="stat-count">{{ $site->site_value }}</i>
                     <p><strong>{{ $site->site_name }}</strong></p>
@@ -308,7 +308,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row blog-widget" style="background-color: #F7F6F2; padding:10px;">
+                <div class="row blog-widget" style="background-color: #F7F6F2;">
                           @foreach ($events as $event)
                     <div class="col-md-6 col-sm-12">
 

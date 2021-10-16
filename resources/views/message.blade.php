@@ -26,11 +26,11 @@
                 <div class="content-widget">
                     @foreach ($sites as $site)
                     @if ($site->site_key=='message-from-principal')
-<div class="widget-title">
+<div class="widget-title col-sm-6">
                         <h3>{{ $site->site_name }}</h3>
                         <hr>
                     </div>
-                    <div class="row">
+                    <div class="row col-sm-6">
                         <p>{{ $site->site_value }}</p>
                             <br>
                             <p style="color: red;">Prof.Shiva Thapa
