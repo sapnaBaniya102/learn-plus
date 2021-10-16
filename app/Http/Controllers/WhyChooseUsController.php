@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 
-class WhychooseusController extends Controller
+class WhyChooseUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class WhychooseusController extends Controller
      */
     public function index()
     {
-        $whychooseus=Whychooseus::all();
+        $whychooseus=WhyChooseUs::all();
         return view('admin.whychooseus.index',compact('whychooseus'));
     }
 
@@ -36,14 +36,14 @@ class WhychooseusController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(([
+        $request->validate([
             'heading'=>'required',
             'text'=>'required',
             'status'=>'required',
 
-       ]));
+       ]);
 
-       $whychooseus=new Whychooseus([
+       $whychooseus=new WhyChooseUs([
            'heading'=>$request->get('heading'),
              'text'=>$request->get('text'),
                  'status'=>$request->get('status'),
@@ -58,7 +58,7 @@ class WhychooseusController extends Controller
      * @param  \App\Models\Whychooseus  $whychooseus
      * @return \Illuminate\Http\Response
      */
-    public function show(Whychooseus $whychooseus)
+    public function show(WhyChooseUs $whychooseus)
     {
         return view('admin.whychooseus.show',compact('whychooseus'));
     }
@@ -69,9 +69,9 @@ class WhychooseusController extends Controller
      * @param  \App\Models\Whychooseus  $whychooseus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Whychooseus $whychooseus)
+    public function edit(WhyChooseUs $whychooseu)
     {
-        return view('admin.whychooseus.edit',compact('whychooseus'));
+        return view('admin.whychooseus.edit',compact('whychooseu'));
     }
 
     /**
@@ -81,16 +81,19 @@ class WhychooseusController extends Controller
      * @param  \App\Models\Whychooseus  $whychooseus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Whychooseus $whychooseus)
+    public function update(Request $request, WhyChooseUs $whychooseu)
     {
+
         $request->validate([
             'heading'=>'required',
             'text'=>'required',
             'status'=>'required',
         ]);
 
-        $whychooseus->update($request->all());
+        $whychooseu->update($request->all());
         return redirect()->route('whychooseus.index')->with('update','Whychooseus update successfully.');
+
+
     }
 
     /**
@@ -99,7 +102,7 @@ class WhychooseusController extends Controller
      * @param  \App\Models\Whychooseus  $whychooseus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Whychooseus $whychooseus)
+    public function destroy(WhyChooseUs $whychooseus)
     {
         $whychooseus->delete();
         return redirect('whychooseus')->with('delete', 'Deleted successfully');

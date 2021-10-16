@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coursecat extends Model
+class Chooseus extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'c_id';
-       protected $fillable=(
-        [ 'c_name', 'c_status']
+     protected $fillable=(
+        [ 'heading', 'text','status',]
     );
 }

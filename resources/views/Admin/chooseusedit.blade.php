@@ -17,7 +17,7 @@
 													<div class="wizard-wrapper">
 														<div class="wizard-number"></div>
 														<div class="wizard-label">
-															<div class="wizard-title">Edit Siteconfig</div><a href="{{ url('siteconfig') }}"><button class="p-2 rounded btn-primary">Back</button></a>
+															<div class="wizard-title">Edit Choose us</div><a href="{{ url('chooseus') }}"><button class="p-2 rounded btn-primary">Back</button></a>
 
 														</div>
 
@@ -44,7 +44,7 @@
                                                                 </ul>
                                                             </div>
                                                         @endif
-														<form class="form" id="kt_form" action="{{ route('siteconfig.update', $siteconfig->id) }}" method="POST" enctype="multipart/form-data">
+														<form class="form" action="{{ route('chooseus.update',$chooseus->id) }}" method="POST" enctype="multipart/form-data">
                                                                 @method('PATCH')
                                                                 @csrf
 															<div class="row justify-content-center">
@@ -56,43 +56,29 @@
 
                                                                         <!--begin::Group-->
                                                                         <div class="form-group row">
-                                                                            <label class="col-xl-3 col-lg-3 col-form-label">Site_name:</label>
+                                                                            <label class="col-xl-3 col-lg-3 col-form-label">heading:</label>
                                                                             <div class="col-lg-9 col-xl-9">
-                                                                                <input class="form-control form-control-solid form-control-lg" name="site_name" type="text" value="{{$siteconfig->site_name}}" />
+                                                                                <input class="form-control form-control-solid form-control-lg" name="heading" type="text" value="{{$chooseus_detail->heading}}" />
                                                                             </div>
                                                                         </div>
                                                                         <!--end::Group-->
                                                                             <!--begin::Group-->
                                                                         <div class="form-group row">
-                                                                            <label class="col-xl-3 col-lg-3 col-form-label">site_key:</label>
+                                                                            <label class="col-xl-3 col-lg-3 col-form-label">text:</label>
                                                                             <div class="col-lg-9 col-xl-9">
-                                                                                <input class="form-control form-control-solid form-control-lg" name="site_key" type="text" value="{{$siteconfig->site_key}}" />
+                                                                                <input class="form-control form-control-solid form-control-lg" name="text" type="text" value="{{$chooseus_detail->text}}" />
                                                                             </div>
                                                                         </div>
                                                                         <!--end::Group-->
-                                                                            <!--begin::Group-->
-                                                                        <div class="form-group row">
-                                                                            <label class="col-xl-3 col-lg-3 col-form-label">site_value:</label>
-                                                                            <div class="col-lg-9 col-xl-9">
-                                                                                <input class="form-control form-control-solid form-control-lg" name="site_value" type="text" value="{{$siteconfig->site_value}}" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--end::Group-->
-                                                                        <div class="form-group row">
-                                                                            <label class="col-xl-3 col-lg-3 col-form-label">Imglink:</label>
-                                                                            <div class="col-lg-9 col-xl-9">
-                                                                                <input class="form-control form-control-solid form-control-lg" name="imglink" type="text" value="{{$siteconfig->imglink}}" />
-                                                                            </div>
-                                                                        </div>
-                                                                            <!--begin::Group-->
+
 
 																		<!--begin::Group-->
 																		<div class="form-group row">
 																			<label class="col-form-label col-lg-3 col-sm-12">Status</label>
 																			<div class="col-lg-9 col-md-9 col-sm-12">
 																				<select class="form-control" name="status">
-																					<option value="{{ $siteconfig->status }}">{{ $siteconfig->status }}</option>
-																			@if ($siteconfig->status='Active')
+																					<option value="{{ $chooseus_detail->status }}">{{ $chooseus_detail->status }}</option>
+																			@if ($chooseus_detail->status='Active')
                                                                                     	<option >Deactive</option>
                                                                                     @else
                                                                                     <option >Active</option>

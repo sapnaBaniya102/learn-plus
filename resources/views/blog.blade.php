@@ -80,7 +80,7 @@
                         <ul class="latest-tweets">
                              @foreach ($blogs as $blog)
                             <li>
-                                <p><a href="{{ url('blog_details/'.$blog->id)}}" title=""></a>{{ $blog->tittle}}</p>
+                                <p><a href="{{ url('blog_details/'.$blog->id)}}" title="">{{ $blog->tittle}}</a></p>
                                 <span>{{ $blog->date }}</span>
                             </li>
                             @endforeach

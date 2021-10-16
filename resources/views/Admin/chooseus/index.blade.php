@@ -1,5 +1,4 @@
 @extends('admin.layout.layout')
-
 @section('content')
 	<!--begin::Entry-->
 					<div class="d-flex flex-column-fluid">
@@ -16,49 +15,57 @@
 											<div class="col-md-12">
 												<div class="card card-primary">
 													<div class="card-header">
-														<h3 class="card-title">Manage WhychooseUs</h3><a href="{{ route('whychooseus.create') }}"><button class="p-2 rounded btn-primary">Add Data</button></a>
+														<h3 class="card-title">Manage Siteconfig</h3><a href="{{ route('chooseus.create') }}"><button class="p-2 rounded btn-primary">Add Choose us</button></a>
 													</div>
-													                                                                                            @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+                                              @if ($message = Session::get('success'))
+															<div class="alert alert-success">
+																<p>{{ $message }}</p>
+															</div>
+														@endif
 
-													<!-- /.card-header -->
+																<!-- /.card-header -->
 													<div class="card-body">
 														<table id="example1" class="table table-bordered table-striped">
 															<thead>
 																<tr>
 																	<th>S.N.</th>
 																	<th>Action</th>
-																	<th>Heading</th>
-																	<th>Text</th>
-                                                                    <th>Status</th>
-                                                                    <th>id</th>
+																	<th>Choose us heading</th>
+																	<th>Choose us text</th>
+
+																	<th>Status</th>
 																</tr>
 															</thead>
 															<tbody>
-															@foreach ($whychooseus as $whychooseuses)
+															@foreach ($chooseus as $chooseuses)
+
 
 																	<tr>
-																		<td>{{ $loop->index+1}}</td>
-																		<td>
-																			<a href="{{ route('whychooseus.edit',$whychooseuses->id) }}"><button class="p-2 rounded btn-primary">Edit</button></a>
-																	<form action="{{ route('whychooseus.destroy', $whychooseuses->id) }}" method="post">
+																		<td>{{ $loop->index+1 }}</td>
+																<td>
+                                                                    	<a href="{{ url('chooseusedit/'.$chooseuses->id) }}"><button class="p-2 rounded btn-primary">Edit</button></a>
+                                                                        <form action="{{ route('chooseus.destroy', $chooseuses->id) }}" method="post">
+
+
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" name="submit" class="p-2 rounded btn-danger">Delete</button>
 
                                                                         </form>
 
-																		</td>
-																		<td>{{ $whychooseuses->heading }}</td>
-																		<td>{{ $whychooseuses->text }}</td>
-																		<td>{{ $whychooseuses->status }}</td>
-                                                                        <td>{{ $whychooseuses->id }}</td>
+
+
+
+																	</td>
+                                                                    <td>{{ $chooseuses->heading}}</td>
+																		<td>{{ $chooseuses->text }}</td>
+
+																		<td>{{ $chooseuses->status }}</td>
+
 
 																	</tr>
-                                                                    @endforeach
+                                                                     @endforeach
+
 																</tfoot>
 														</table>
 													</div>
@@ -77,4 +84,5 @@
 						<!--end::Container-->
 					</div>
 					<!--end::Entry-->
+
 @endsection

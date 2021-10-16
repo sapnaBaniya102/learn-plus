@@ -32,7 +32,7 @@
               @foreach ($categories as $category)
 
 
-<li><a href="{{ url('courses/'.$category->c_id) }}" data-option-value=".cat1">{{ $category->c_name }}</a></li>
+<li><a href="{{ url('courses/'.$category->c_id) }}" >{{ $category->c_name }}</a></li>
               @endforeach
 
             </ul>

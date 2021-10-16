@@ -37,11 +37,12 @@
 														<tbody>
                                                             @foreach ($gallery as $galleries)
                                                             <tr>
-																	<td>{{ $loop->index }}</td>
+																	<td>{{ $loop->index+1 }}</td>
 																	<td>
+                                                                        	<a href="{{ route('gallery.edit', $galleries->id) }}"><button class="p-2 rounded btn-primary">Edit</button></a>
                                                                         <form action="{{ route('gallery.destroy', $galleries->id) }}" method="post">
-                                                                            	<a href="{{ route('gallery.edit', $galleries->id) }}"><button class="p-2 rounded btn-primary">Edit</button></a>
-																		<a href="{{ route('gallery.show', $galleries->id) }}"><button class="p-2 rounded btn-secondary">Show</button></a>
+
+
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" name="submit" class="p-2 rounded btn-danger">Delete</button>

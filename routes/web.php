@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\GalleryCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsController;
@@ -17,7 +16,8 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\SiteconfigController;
 use App\Http\Controllers\SliderController;
-use App\Http\Controllers\WhychooseusController;
+use App\Http\Controllers\WhyChooseUsController;
+use App\Http\Controllers\ChooseusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,6 @@ Route::get('/register', 'App\Http\Controllers\LoginController@register')->name('
 
 Route::get('/admin/dashboard', 'App\Http\Controllers\LoginController@dashboard')->middleware('AuthCheck');
 
-Route::resource('galleryCategory', GalleryCategoryController::class)->middleware('AuthCheck');
 Route::resource('gallery', GalleryController::class)->middleware('AuthCheck');
 Route::resource('message', MessageController::class)->middleware('AuthCheck');
 Route::resource('news', NewsController::class)->middleware('AuthCheck');
@@ -54,12 +53,15 @@ Route::resource('event', EventController::class)->middleware('AuthCheck');
 Route::resource('notice', NoticeController::class)->middleware('AuthCheck');
 Route::resource('slider', SliderController::class)->middleware('AuthCheck');
 Route::resource('siteconfig', SiteconfigController::class)->middleware('AuthCheck');
-Route::resource('whychooseus', WhychooseusController::class)->middleware('AuthCheck');
+
+Route::resource('chooseus', ChooseusController::class)->middleware('AuthCheck');
+Route::resource('whychooseus', WhyChooseUsController::class)->middleware('AuthCheck');
 Route::resource('files', FileController::class)->middleware('AuthCheck');
 Route::resource('course', CourseController::class)->middleware('AuthCheck');
 Route::resource('coursecat', CoursecatController::class)->middleware('AuthCheck');
 Route::resource('admission', AdmissionController::class)->middleware('AuthCheck');
 
+Route::get('/chooseusedit/{id}','App\Http\Controllers\ChooseusController@edit');
 
 
 Route::get('/index','App\Http\Controllers\IndexController@index');

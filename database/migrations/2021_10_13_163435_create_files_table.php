@@ -20,7 +20,8 @@ class CreateFilesTable extends Migration
             $table->string('extension')->nullable();
             $table->text('details')->nullable();
             $table->integer('status')->default(1);
-            $table->timestamps();
+                        $table->timestamps();
+                        $table->softDeletes();
         });
     }
 

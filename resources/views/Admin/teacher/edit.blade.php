@@ -45,7 +45,9 @@
     @endif
 
 
-														<form class="form" id="kt_form" action="{{ route('teacher.update', $teacher->id) }}">
+														<form class="form" id="kt_form" action="{{ route('teacher.update', $teacher->id) }}" method="POST" enctype="multipart/form-data">
+                                                            @method('PATCH')
+                                                                @csrf
 															<div class="row justify-content-center">
 																<div class="col-xl-9">
 																	<!--begin::Wizard Step 1-->
@@ -114,7 +116,7 @@
 
 																		<div>
 
-																			<button type="button" id="next-step" class="py-4 btn btn-primary font-weight-bolder px-9" data-wizard-type="action-next">Edit</button>
+																			<button class="py-4 btn btn-primary font-weight-bolder px-9" type="submit" name="submit">Edit</button>
 																		</div>
 																	</div>
 																	<!--end::Wizard Actions-->

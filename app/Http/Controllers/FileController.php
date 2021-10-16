@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FileAddRequest;
+
 use App\Models\File;
 use Illuminate\Http\Request;
 
@@ -118,8 +119,7 @@ class FileController extends Controller
         $file = new File;
         $file = File::withTrashed()->where('id',$id)->first();
         if($file->trashed()) {
-            $last_file = public_path().'/uploads/files/'.$file->file_link;
-            File::delete($last_file);
+
 
             $file->forceDelete();
             return redirect('files?data-show=trashed')->with('message','File is Deleted Parmanently.');

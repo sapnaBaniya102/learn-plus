@@ -16,7 +16,7 @@ class GalleryController extends Controller
     public function index()
     {
           $gallery=Gallery::all();
-        return view('admin.gallery.index',compact('gallery', ));
+        return view('admin.gallery.index',compact('gallery'));
     }
 
     /**
@@ -95,7 +95,7 @@ class GalleryController extends Controller
         ]);
 
         $gallery->update($request->all());
-        return redirect()->route('gallery.index')->with('update',"updated succesfully");
+        return redirect()->route('gallery.index')->with('update','updated succesfully');
     }
 
     /**
@@ -107,7 +107,7 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
          $gallery->delete();
-        return redirect('gallery')-with('deleted', 'deleted succesfully');
+        return redirect('gallery')->with('deleted', 'deleted succesfully');
     }
 
 }
