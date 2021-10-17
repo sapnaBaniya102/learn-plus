@@ -44,7 +44,7 @@ Route::get('/register', 'App\Http\Controllers\LoginController@register')->name('
 Route::get('/admin/dashboard', 'App\Http\Controllers\LoginController@dashboard')->middleware('AuthCheck');
 
 Route::resource('gallery', GalleryController::class)->middleware('AuthCheck');
-Route::resource('message', MessageController::class)->middleware('AuthCheck');
+Route::resource('message', MessageController::class);
 Route::resource('news', NewsController::class)->middleware('AuthCheck');
 Route::resource('result', ResultsController::class)->middleware('AuthCheck');
 Route::resource('teacher', TeacherController::class)->middleware('AuthCheck');
@@ -59,7 +59,7 @@ Route::resource('whychooseus', WhyChooseUsController::class)->middleware('AuthCh
 Route::resource('files', FileController::class)->middleware('AuthCheck');
 Route::resource('course', CourseController::class)->middleware('AuthCheck');
 Route::resource('coursecat', CoursecatController::class)->middleware('AuthCheck');
-Route::resource('admission', AdmissionController::class)->middleware('AuthCheck');
+Route::resource('admission', AdmissionController::class);
 
 Route::get('/chooseusedit/{id}','App\Http\Controllers\ChooseusController@edit');
 

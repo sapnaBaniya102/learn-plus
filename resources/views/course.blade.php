@@ -41,7 +41,7 @@
 @foreach ($course as $courses)
 
 
- <div class="item cat1">
+ <div class="item cat1 ">
               <div class="shop-item-list entry"><a href="{{ url('course_details/'.$courses->id)}}">
                 <div class="">
                   <img src="{{asset('uploads/files/'.$courses->imglink)  }}" alt="">
