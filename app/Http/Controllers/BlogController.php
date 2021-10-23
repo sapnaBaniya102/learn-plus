@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\siteconfig;
+use App\Models\coursecat;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class BlogController extends Controller
     public function index()
     {
             if (session()->has('LoggedUser')) {
-             $blog=blog::all();
+             $blog=blog::paginate(8);
         return view('admin.blog.index',compact('blog'));
         }
     }
@@ -28,6 +29,21 @@ class BlogController extends Controller
     public function create()
     {
         return view('admin.blog.create');
+    }
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $categories = Coursecat::all();
+        $sites = SiteConfig::all();
+        $blog1 = Blog::orderBy('created_at','desc')->limit(5)->get();
+
+        // Search in the title and body columns from the posts table
+        $blogs = blog::query()
+            ->where('tittle', 'LIKE', "%{$search}%")
+            ->paginate(4);
+
+        // Return the search view with the resluts compacted
+        return view('blog', compact('blogs', 'categories','sites','blog1'));
     }
 
     /**

@@ -25,6 +25,7 @@
                 <div class="col-md-8 col-xs-12">
                     @foreach ($newses as $news)
 
+
                     <div class="col-md-6">
                         <div class="blog-wrapper">
                             <div class="blog-title">
@@ -38,8 +39,9 @@
                             <div class="blog-desc">
                                 <div class="post-date">
                                     <span class="day">{{ $news->date }}</span>
+
                                 </div>
-                                <p>{{ $news->text }}
+                                <p>{{ Illuminate\Support\Str::words($news->text, 10, '...') }}
                                 </p>
                                 <a href="{{ url('news_details/'.$news->id) }}" class="readmore">Read More</a>
                             </div>
@@ -48,31 +50,30 @@
                     @endforeach
 
 
-                    <hr class="invis">
-                <nav class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+    <hr class="invis">
+                <div class="row">
+
+
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                {{ $newses->links() }}
+                            </div>
+                        </div>
+
+
+</div>
                 </div>
 
 
             <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
-
+                <div class="widget">
+                    <div class="searchform">
+                        <form action="{{ route('newsSearch') }}" method="GET">
+                            <input type="text" name="search" required/>
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
                 <div class="widget">
                     <div class="widget-title">
                         <h4>Recent News</h4>
@@ -80,10 +81,10 @@
                     </div>
                     <div class="twitter-widget">
                         <ul class="latest-tweets">
-                            @foreach ($newses as $news)
+                            @foreach ($news1 as $news2)
  <li>
-                                <p><a href="{{ url('news_details/'.$news->id) }}" title="">{{ $news->title }}</a></p>
-                                <span>{{ $news->date }}</span>
+                                <p><a href="{{ url('news_details/'.$news2->id) }}" title="">{{ Illuminate\Support\Str::words($news2->title, 4, '...') }}</a></p>
+                                <span>{{ $news2->date }}</span>
                             </li>
                             @endforeach
 

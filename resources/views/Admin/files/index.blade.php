@@ -26,7 +26,7 @@
                       <div class="col-12">
                         <div class="card">
                           <div class="card-header">
-                            <h4 class="card-title">Manage files</h4>
+                            <h4 class="card-title">Manage files <a href="{{ route('files.create') }}"><button class="p-2 rounded btn-primary">Add File</button></a></h4>
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                             <div class="heading-elements">
                               <ul class="mb-0 list-inline">
@@ -140,6 +140,13 @@
                                   </tr>
                                   </thead>
                               </table>
+                              <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        {{ $files->links() }}
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                           </div>
                         </div>

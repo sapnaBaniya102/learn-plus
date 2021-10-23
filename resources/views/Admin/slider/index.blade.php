@@ -59,7 +59,7 @@
 																		<td>{{ $sliders->name }}</td>
 																		<td>{{ $sliders->header }}</td>
 																		<td>{{ $sliders->sub_heading }}</td>
-                                                                        <td>{{ $sliders->text}}</td>
+                                                                        <td>{{ Illuminate\Support\Str::words($sliders->text, 10, '...')}}</td>
                                                                         <td>{{ $sliders->img_link }}</td>
                                                                         <td>{{ $sliders->btn}}</td>
                                                                         <td>{{ $sliders->btnlink}}</td>
@@ -69,6 +69,13 @@
  @endforeach
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $slider->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

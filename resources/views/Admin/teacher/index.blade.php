@@ -59,7 +59,7 @@
 																		<td>{{ $teachers->name }}</td>
 																		<td>{{ $teachers->post }}</td>
 																		<td><img src="{{ asset('uploads/files/'.$teachers->img_link)  }}" alt="" width="100"></td>
-																		<td>{{ $teachers->details }}</td>
+																		<td>{{ Illuminate\Support\Str::words($teachers->details, 16, '...') }}</td>
 
 																		<td>{{ $teachers->status }}</td>
 
@@ -67,6 +67,13 @@
     @endforeach
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $teacher->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

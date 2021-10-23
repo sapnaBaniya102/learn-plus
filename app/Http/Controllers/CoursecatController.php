@@ -14,7 +14,7 @@ class CoursecatController extends Controller
      */
     public function index()
     {
-         $coursecat=Coursecat::all();
+         $coursecat=Coursecat::paginate(8);
         return view('admin.coursecat.index',compact('coursecat'));
     }
 

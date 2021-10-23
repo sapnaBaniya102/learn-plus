@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\siteconfig;
+use App\Models\coursecat;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-          $teacher=Teacher::all();
+          $teacher=Teacher::paginate(4);
         return view('admin.teacher.index',compact('teacher'));
     }
 
@@ -66,9 +67,7 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
-    {
-    }
+
 
     /**
      * Show the form for editing the specified resource.

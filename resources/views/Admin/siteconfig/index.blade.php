@@ -60,7 +60,7 @@
 																	</td>
                                                                     <td>{{ $siteconfiges->site_name}}</td>
 																		<td>{{ $siteconfiges->site_key }}</td>
-																		<td>{{ $siteconfiges->site_value }}</td>
+																		<td>{{ Illuminate\Support\Str::words($siteconfiges->site_value, 10, '...') }}</td>
                                                                         <td>{{ $siteconfiges->imglink}}</td>
 																		<td>{{ $siteconfiges->status }}</td>
 
@@ -70,6 +70,13 @@
 
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $siteconfig->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

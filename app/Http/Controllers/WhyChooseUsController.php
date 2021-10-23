@@ -14,7 +14,7 @@ class WhyChooseUsController extends Controller
      */
     public function index()
     {
-        $whychooseus=WhyChooseUs::all();
+        $whychooseus=WhyChooseUs::paginate(4);
         return view('admin.whychooseus.index',compact('whychooseus'));
     }
 

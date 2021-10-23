@@ -9,6 +9,6 @@ class Course extends Model
 {
     use HasFactory;
       protected $fillable=(
-        [ 'name', 'text', 'time', 'duration', 'imglink', 'c_id', 'status']
+        [ 'name', 'text', 'time', 'duration', 'imglink', 'c_id', 'status','student']
     );
 }

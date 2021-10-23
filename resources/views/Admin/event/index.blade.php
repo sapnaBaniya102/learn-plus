@@ -62,13 +62,20 @@
 																		<td>{{ $events->time }}</td>
 																		<td>{{ $events->address }}</td>
 																		<td>{{ $events->img_link }}</td>
-																		<td>{{ $events->details}}</td>
+																		<td>{{ Illuminate\Support\Str::words($events->details, 16, '...')}}</td>
 																		<td>{{ $events->status }}</td>
 
 																	</tr>
  @endforeach
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $event->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

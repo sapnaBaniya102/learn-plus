@@ -36,6 +36,7 @@
 																	<th>course text</th>
                                                                     <th>course time</th>
                                                                     <th>course duration</th>
+                                                                    <th>Student</th>
 																	<th>course imglink</th>
 																	<th>Status</th>
                                                                     	<th>Course Category</th>
@@ -57,9 +58,10 @@
                                                                         </form>
 																		</td>
 																		<td>{{ $courses->name }}</td>
-																		<td>{{ $courses->text }}</td>
+																		<td>{{ Illuminate\Support\Str::words($courses->text, 10, '...') }}</td>
                                                                         <td>{{ $courses->time }}</td>
 																		<td>{{ $courses->duration }}</td>
+                                                                        <td>{{ $courses->student }}</td>
                                                                         <td>{{ $courses->imglink }}</td>
 																		<td>{{ $courses->status }}</td>
 	<td>{{ $courses->c_id }}</td>
@@ -67,6 +69,13 @@
  @endforeach
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $course->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

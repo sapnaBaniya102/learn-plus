@@ -63,10 +63,10 @@
 
 																	</td>
 																		<td>{{ $newses->title }}</td>
-																		<td>{{ $newses->text }}</td>
+																		<td>{{ Illuminate\Support\Str::words($newses->text, 10, '...') }}</td>
 																		<td>{{ $newses->date }}</td>
 
-																		<td>{{ $newses->details }}</td>
+																		<td>{{ Illuminate\Support\Str::words($newses->details, 16, '...') }}</td>
                                                                         <td>
                                                                             <img src="{{ asset('uploads/files/'.$newses->imglink) }}" alt="" width="120"></td>
 																		<td>{{ $newses->status }}</td>
@@ -77,6 +77,13 @@
 
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $news->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

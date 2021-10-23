@@ -46,13 +46,7 @@
 
                     </div>
                     <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="widget">
-                            <div class="searchform">
-                                <form>
-                                    <input type="text" class="form-control" placeholder="What you are looking for?">
-                                </form>
-                            </div>
-                        </div>
+
 
                         <div class="widget">
                             <div class="widget-title">
@@ -63,7 +57,7 @@
                                 <ul class="latest-tweets">
                                     @foreach ($notices as $notice)
                             <li>
-                                <p><a href="{{ url('notice_details/'.$notice->id) }}">{{ $notice->heading }}</a></p>
+                                <p><a href="{{ url('notice_details/'.$notice->id) }}">{{ Illuminate\Support\Str::words($notice->heading, 5, '...') }}</a></p>
                             </li>
                             @endforeach
                                 </ul>

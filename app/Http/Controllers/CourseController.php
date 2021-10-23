@@ -15,7 +15,7 @@ class courseController extends Controller
      */
     public function index()
     {
-         $course=Course::all();
+         $course=Course::paginate(4);
         $coursecat=Coursecat::all();
         return view('admin.course.index',compact('course','coursecat'));
     }
@@ -43,6 +43,7 @@ class courseController extends Controller
               'text'=>'required',
                'time'=>'required',
                'duration'=>'required',
+               'student'=>'required',
                'imglink'=>'required',
                   'status'=>'required',
                   'c_id'=>'required',
@@ -54,6 +55,7 @@ class courseController extends Controller
               'text'=>$request->get('text'),
               'time'=>$request->get('time'),
                'duration'=>$request->get('duration'),
+               'student'=>$request->get('student'),
                'imglink'=>$request->get('imglink'),
                   'status'=>$request->get('status'),
                    'c_id'=>$request->get('c_id'),
@@ -98,6 +100,7 @@ class courseController extends Controller
             'text'=>'required',
              'time'=>'required',
              'duration'=>'required',
+             'student'=>'required',
              'imglink'=>'required',
                 'status'=>'required',
 

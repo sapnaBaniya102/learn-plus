@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\siteconfig;
+use App\Models\coursecat;
 use App\Models\News;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-         $news=News::all();
+         $news=News::paginate(4);
         return view('admin.news.index',compact('news'));
     }
 
@@ -28,6 +29,23 @@ class NewsController extends Controller
         return view('admin.news.create');
     }
 
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $categories = Coursecat::all();
+        $sites = SiteConfig::all();
+
+        // Search in the title and body columns from the posts table
+        $newses = News::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('date', 'LIKE', "%{$search}%")
+            ->paginate(4);
+            $news1 = News::orderBy('created_at','desc')->limit(5)->get();
+
+
+        // Return the search view with the resluts compacted
+        return view('news', compact('newses', 'categories','sites','news1'));
+    }
     /**
      * Store a newly created resource in storage.
      *

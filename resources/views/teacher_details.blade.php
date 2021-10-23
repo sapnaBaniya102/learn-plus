@@ -22,7 +22,7 @@
                 </div>
                 <div class="blog-wrapper">
                     <div class="blog-image">
-                        <a href="single.html" title=""><img src="{{ asset('uploads/files/'.$teacher_detail->img_link) }}"
+                        <a href="single.html" title=""><img src="{{ asset('uploads/files/'.$teacher_detail->img_link) }}" style="width: 100%"
                                 alt="" class="img-responsive" width="400"></a>
                     </div>
                     <div class="blog-desc">
@@ -35,13 +35,7 @@
                 </div>
             </div>
             <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
-                <div class="widget">
-                    <div class="searchform">
-                        <form>
-                            <input type="text" class="form-control" placeholder="What you are looking for?">
-                        </form>
-                    </div>
-                </div>
+
                 <div class="widget">
                     <div class="widget-title">
                         <h4>Our Courses</h4>

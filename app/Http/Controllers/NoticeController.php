@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\siteconfig;
+use App\Models\coursecat;
 use App\Models\Notice;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class NoticeController extends Controller
      */
     public function index()
     {
-         $notice=Notice::all();
+         $notice=Notice::paginate(4);
         return view('admin.notice.index',compact('notice'));
     }
 
@@ -26,6 +27,24 @@ class NoticeController extends Controller
     public function create()
     {
          return view('admin.notice.create');
+    }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $categories = Coursecat::all();
+        $sites = SiteConfig::all();
+        $notice1 = Notice::orderBy('created_at','desc')->limit(5)->get();
+        // Search in the title and body columns from the posts table
+        $notices = Notice::query()
+            ->where('heading', 'LIKE', "%{$search}%")
+            ->orWhere('date', 'LIKE', "%{$search}%")
+            ->orWhere('started', 'LIKE', "%{$search}%")
+            ->orWhere('ended', 'LIKE', "%{$search}%")
+            ->paginate(4);
+
+        // Return the search view with the resluts compacted
+        return view('notice', compact('notices', 'categories','sites','notice1'));
     }
 
     /**

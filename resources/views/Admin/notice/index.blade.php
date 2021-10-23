@@ -58,7 +58,7 @@
 																		</td>
 																		<td>{{ $notices->heading }}</td>
 																		<td>{{ $notices->date }}</td>
-																		<td>{{ $notices->detail }}</td>
+																		<td>{{ Illuminate\Support\Str::words($notices->detail, 16, '...') }}</td>
                                                                         <td>{{ $notices->started }}</td>
                                                                         <td>{{ $notices->ended }}</td>
 																		<td>{{ $notices->status }}</td>
@@ -67,6 +67,13 @@
  @endforeach
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $notice->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

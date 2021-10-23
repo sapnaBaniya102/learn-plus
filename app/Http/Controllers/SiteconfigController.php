@@ -14,7 +14,7 @@ class SiteconfigController extends Controller
      */
     public function index()
     {
-        $siteconfig=Siteconfig::all();
+        $siteconfig=Siteconfig::paginate(8);
        return view('admin.siteconfig.index',compact('siteconfig'));
    }
 

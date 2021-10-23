@@ -19,8 +19,10 @@
                         </div>
                     </div>
                 </div>
-               @foreach ($blogs as $blog)
+
+    @foreach ($blogs as $blog)
    <div class="blog-wrapper">
+
                     <div class="blog-title">
                         <h2><a href="{{ url('blog_details/'.$blog->id)}}" title="">{{ $blog->tittle }}</a></h2>
                     </div>
@@ -33,40 +35,30 @@
                             <span class="day">{{ $blog->date }}</span>
 
                         </div>
-                        <p>{{ $blog->text }}</p>
+                        <p>{{ Illuminate\Support\Str::words($blog->text, 15, '...') }}</p>
                         <a href="{{ url('blog_details/'.$blog->id)}}" class="readmore">Read More</a>
                     </div>
-                </div>
-               @endforeach
 
 
 
-                <hr class="invis">
-                <nav class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+
+</div>
+@endforeach
+<hr class="invis">
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            {{ $blogs->links() }}
+        </div>
+    </div>
+</div>
             </div>
             <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
                 <div class="widget">
                     <div class="searchform">
-                        <form>
-                            <input type="text" class="form-control" placeholder="What you are looking for?">
+                        <form action="{{ route('blogSearch') }}" method="GET">
+                            <input type="text" name="search" required/>
+                            <button type="submit">Search</button>
                         </form>
                     </div>
                 </div>
@@ -78,10 +70,10 @@
                     </div>
                     <div class="twitter-widget">
                         <ul class="latest-tweets">
-                             @foreach ($blogs as $blog)
+                             @foreach ($blog1 as $blog2)
                             <li>
-                                <p><a href="{{ url('blog_details/'.$blog->id)}}" title="">{{ $blog->tittle}}</a></p>
-                                <span>{{ $blog->date }}</span>
+                                <p><a href="{{ url('blog_details/'.$blog2->id)}}" title="">{{ Illuminate\Support\Str::words($blog2->tittle, 6, '...')}}</a></p>
+                                <span>{{ $blog2->date }}</span>
                             </li>
                             @endforeach
 

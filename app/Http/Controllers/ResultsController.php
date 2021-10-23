@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\siteconfig;
+use App\Models\coursecat;
 use App\Models\Results;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ResultsController extends Controller
      */
     public function index()
     {
-         $result=Results::all();
+         $result=Results::paginate(8);
         return view('admin.result.index',compact('result'));
     }
 
@@ -26,6 +27,22 @@ class ResultsController extends Controller
     public function create()
     {
          return view('admin.result.create');
+    }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $categories = Coursecat::all();
+        $sites = SiteConfig::all();
+        $result1 = Results::orderBy('created_at','desc')->limit(5)->get();
+        // Search in the title and body columns from the posts table
+        $results = Results::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('date', 'LIKE', "%{$search}%")
+            ->paginate(8);
+
+        // Return the search view with the resluts compacted
+        return view('result', compact('results', 'categories','sites','result1'));
     }
 
     /**
@@ -101,6 +118,9 @@ class ResultsController extends Controller
         $result->update($request->all());
         return redirect()->route('result.index')->with('update','Result updated successfully');
     }
+
+    // download link
+
 
     /**
      * Remove the specified resource from storage.

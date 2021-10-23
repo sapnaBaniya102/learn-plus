@@ -31,7 +31,7 @@
                         <div class="shop-item-list entry">
 
                             <div class="shop-item-title clearfix">
-                                <h4><a href="{{ url('notice_details/'.$notice->id) }}">{{ $notice->heading }}</a></h4>
+                                <h4><a href="{{ url('notice_details/'.$notice->id) }}">{{ Illuminate\Support\Str::words($notice->heading , 5, '...') }}</a></h4>
                                 <div class="shopmeta">
                                     <div class="post-meta">
 
@@ -54,23 +54,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="text-center">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            {{ $notices->links()}}
                         </nav>
                     </div>
                 </div>
@@ -79,8 +63,9 @@
             <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
                 <div class="widget">
                     <div class="searchform">
-                        <form>
-                            <input type="text" class="form-control" placeholder="What you are looking for?">
+                        <form action="{{ route('noticeSearch') }}" method="GET">
+                            <input type="text" name="search" placeholder="Search Notice Name" required/>
+                            <button type="submit">Search</button>
                         </form>
                     </div>
                 </div>
@@ -93,9 +78,9 @@
                     </div>
                     <div class="twitter-widget">
                         <ul class="latest-tweets">
-                             @foreach ($notices as $notice)
+                             @foreach ($notice1 as $notice2)
                             <li>
-                                <p><a href="{{ url('notice_details/'.$notice->id) }}">{{ $notice->heading }}</a></p>
+                                <p><a href="{{ url('notice_details/'.$notice2->id) }}">{{ Illuminate\Support\Str::words($notice2->heading, 5, '...') }}</a></p>
                             </li>
                            @endforeach
                         </ul>

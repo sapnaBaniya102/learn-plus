@@ -71,13 +71,7 @@
 
             </div>
             <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
-                <div class="widget">
-                    <div class="searchform">
-                        <form>
-                            <input type="text" class="form-control" placeholder="What you are looking for?">
-                        </form>
-                    </div>
-                </div>
+
 
                 <div class="widget">
                     <div class="widget-title">
@@ -86,10 +80,13 @@
                     </div>
                     <div class="twitter-widget">
                         <ul class="latest-tweets">
-                            <li>
-                                <p><a href="{{ url('event_details/'.$event_details->id)}}" title="">{{ $event_details->tittle }}</a></p>
-                                <span>{{ $event_details->date }}</span>
+                            @foreach ($event1 as $event2)
+                                 <li>
+                                <p><a href="{{ url('event_details/'.$event2->id)}}" title="">{{ Illuminate\Support\Str::words($event2->tittle, 6, '...') }}</a></p>
+                                <span>{{ $event2->date }}</span>
                             </li>
+                            @endforeach
+
 
                         </ul>
                     </div>

@@ -276,7 +276,7 @@
  <div class="col-md-6 col-sm-12">
                         <div class="blog-wrapper">
                             <div class="blog-title">
-                                <a class="category_title" href="{{ url('blog_details/'.$blog->id)}}" title="">{{ $blog->tittle }}</a>
+                                <a class="category_title" href="{{ url('blog_details/'.$blog->id)}}" title="">{{ Illuminate\Support\Str::words($blog->tittle  , 5, '...')}}</a>
 
                                 <div class="post-meta">
 
@@ -288,7 +288,7 @@
                                 <a href="{{ url('blog_details/'.$blog->id)}}" title=""><img src="{{ asset('uploads/files/'.$blog->img_link) }}" alt="" class="img-responsive"></a>
                             </div>
                             <div class="blog-desc">
-                                <p>{{ $blog->text }}
+                                <p>{{ Illuminate\Support\Str::words($blog->text, 10, '...') }}
                                 </p>
                                 <a href="{{ url('blog_details/'.$blog->id)}}" class="btn btn-default btn-block">Read More</a>
                             </div>
@@ -314,7 +314,7 @@
 
                         <div class="blog-wrapper">
                             <div class="blog-title">
-                                <a class="category_title" href="{{ url('event_details/'.$event->id)}}" title="">{{ $event->tittle }}</a>
+                                <a class="category_title" href="{{ url('event_details/'.$event->id)}}" title="">{{ Illuminate\Support\Str::words($event->tittle , 4, '...') }}</a>
                                 <div class="post-meta">
 
 

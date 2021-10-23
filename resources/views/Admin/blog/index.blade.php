@@ -57,15 +57,23 @@
                                                                         </form>
 																		</td>
 																		<td>{{ $blogs->tittle }}</td>
-																		<td>{{ $blogs->text }}</td>
+																		<td>{{ Illuminate\Support\Str::words($blogs->text, 10, '...') }}</td>
 																		<td>{{ $blogs->img_link }}</td>
-																		<td>{{ $blogs->details}}</td>
+																		<td>{{ Illuminate\Support\Str::words($blogs->details, 16, '...')}}</td>
 																		<td>{{ $blogs->status }}</td>
 
 																	</tr>
  @endforeach
 																</tfoot>
+
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $blog->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>

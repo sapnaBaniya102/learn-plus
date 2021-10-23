@@ -9,7 +9,7 @@
                             </div>
                             @foreach ($sites as $site)
                             @if ($site->site_key=='about')
-                            <p>{{ $site->site_value}}</p>
+                            <p>{{ Illuminate\Support\Str::words($site->site_value, 15, '...')}}</p>
                             <a href="{{ url('aboutus') }}" class="btn btn-default">Read More</a>
                             @endif
                             @endforeach

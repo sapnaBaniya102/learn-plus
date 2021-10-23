@@ -38,13 +38,7 @@
 
             </div>
             <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
-                <div class="widget">
-                    <div class="searchform">
-                        <form>
-                            <input type="text" class="form-control" placeholder="What you are looking for?">
-                        </form>
-                    </div>
-                </div>
+
 
                 <div class="widget">
                     <div class="widget-title">
@@ -53,10 +47,13 @@
                     </div>
                     <div class="twitter-widget">
                         <ul class="latest-tweets">
-                            <li>
-                                <p><a href="{{ url('blog_details/'.$blog_details->id)}}" title="">{{ $blog_details->tittle}}</a> .</p>
-                                <span>{{ $blog_details->date}}</span>
+                            @foreach ($blog1 as $blog2)
+                               <li>
+                                <p><a href="{{ url('blog_details/'.$blog2->id)}}" title="">{{ Illuminate\Support\Str::words($blog2->tittle, 6, '...')}}</a> .</p>
+                                <span>{{ $blog2->date}}</span>
                             </li>
+                            @endforeach
+
 
                         </ul>
                     </div>

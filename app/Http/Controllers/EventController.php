@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\siteconfig;
+use App\Models\coursecat;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event=Event::all();
+        $event=Event::paginate(4);
         return view('admin.event.index',compact('event'));
     }
 
@@ -26,6 +27,24 @@ class EventController extends Controller
     public function create()
     {
         return view('admin.event.create');
+    }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $categories = Coursecat::all();
+        $sites = SiteConfig::all();
+
+        // Search in the title and body columns from the posts table
+        $Events = Event::query()
+            ->where('tittle', 'LIKE', "%{$search}%")
+            ->orWhere('address', 'LIKE', "%{$search}%")
+            ->orWhere('date', 'LIKE', "%{$search}%")
+            ->orWhere('time', 'LIKE', "%{$search}%")
+            ->paginate(9);
+
+        // Return the search view with the resluts compacted
+        return view('event', compact('Events', 'categories','sites'));
     }
 
     /**

@@ -26,7 +26,7 @@
 
                 <div class="col-md-8 col-md-8">
                     <div class="shop-list-desc">
-                        <h4><a href="{{ $result->link }}">{{ $result->name }}</a></h4>
+                        <h4><a  href="{{ asset('uploads/files/'.$result->link)  }}" download>{{ $result->name }}</a></h4>
                         <div class="shopmeta">
                             <div class="post-meta">
 
@@ -47,33 +47,18 @@
             <hr class="invis">
             <div class="row">
                 <div class="col-md-12">
-                    <nav class="text-center">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div class="text-center">
+                        {{ $results->links() }}
+                    </div>
                 </div>
             </div>
         </div>
         <div id="sidebar" class="col-md-4 col-sm-4 col-xs-12">
             <div class="widget">
                 <div class="searchform">
-                    <form>
-                        <input type="text" class="form-control" placeholder="What you are looking for?">
+                    <form action="{{ route('resultSearch') }}" method="GET">
+                        <input type="text" name="search" required/>
+                        <button type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -85,10 +70,10 @@
                 </div>
                 <div class="twitter-widget">
                     <ul class="latest-tweets">
-                        @foreach ($results as $result)
+                        @foreach ($result1 as $result2)
  <li>
-                            <p><a href="{{ $result->link }}">{{ $result->name }}</a></p>
-                            <span>{{ $result->date }}</span>
+                            <p><a href="{{ asset('uploads/files/'.$result2->link)  }}">{{ Illuminate\Support\Str::words($result2->name, 5, '...') }}</a></p>
+                            <span>{{ $result2->date }}</span>
                         </li>
                         @endforeach
 

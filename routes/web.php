@@ -37,14 +37,21 @@ Route::post('/auth/check', 'App\Http\Controllers\LoginController@check')->name('
 Route::get('/auth/logout', 'App\Http\Controllers\LoginController@logout')->name('auth.logout');
 
 
-    Route::get('/login', [LoginController::class, 'login'])->name('auth.login');
+Route::get('/login', [LoginController::class, 'login'])->name('auth.login');
 Route::get('/register', 'App\Http\Controllers\LoginController@register')->name('admin.register');
+Route::get('/register/index', 'App\Http\Controllers\LoginController@index');
+Route::delete('/register/destroy/{admin}', 'App\Http\Controllers\LoginController@destroy');
 
+// backend route
 
 Route::get('/admin/dashboard', 'App\Http\Controllers\LoginController@dashboard')->middleware('AuthCheck');
 
 Route::resource('gallery', GalleryController::class)->middleware('AuthCheck');
-Route::resource('message', MessageController::class);
+
+Route::get('message', 'App\Http\Controllers\MessageController@index')->middleware('AuthCheck')->name('message.index');
+Route::post('message/store', 'App\Http\Controllers\MessageController@store')->name('message.store');
+Route::delete('message/destroy', 'App\Http\Controllers\MessageController@destroy')->name('message.destroy');
+
 Route::resource('news', NewsController::class)->middleware('AuthCheck');
 Route::resource('result', ResultsController::class)->middleware('AuthCheck');
 Route::resource('teacher', TeacherController::class)->middleware('AuthCheck');
@@ -59,11 +66,24 @@ Route::resource('whychooseus', WhyChooseUsController::class)->middleware('AuthCh
 Route::resource('files', FileController::class)->middleware('AuthCheck');
 Route::resource('course', CourseController::class)->middleware('AuthCheck');
 Route::resource('coursecat', CoursecatController::class)->middleware('AuthCheck');
-Route::resource('admission', AdmissionController::class);
+Route::get('admission', 'App\Http\Controllers\AdmissionController@index')->middleware('AuthCheck')->name('admission.index');
+Route::post('admission/store', 'App\Http\Controllers\AdmissionController@store')->name('admission.store');
+Route::delete('admission/destroy', 'App\Http\Controllers\AdmissionController@destroy')->name('admission.destroy');
 
-Route::get('/chooseusedit/{id}','App\Http\Controllers\ChooseusController@edit');
+// end of backend route
+// search route
+
+Route::get('/notices/search', 'App\Http\Controllers\NoticeController@search')->name('noticeSearch');
+Route::get('/results/search', 'App\Http\Controllers\ResultsController@search')->name('resultSearch');
+Route::get('/events/search', 'App\Http\Controllers\EventController@search')->name('eventSearch');
+Route::get('/blogs/search', 'App\Http\Controllers\BlogController@search')->name('blogSearch');
+Route::get('/newses/search', 'App\Http\Controllers\NewsController@search')->name('newsSearch');
+Route::get('/teachers/search', 'App\Http\Controllers\TeacherController@search')->name('teacherSearch');
 
 
+// end of search route
+
+// front end route
 Route::get('/index','App\Http\Controllers\IndexController@index');
 Route::get('/','App\Http\Controllers\IndexController@index');
 Route::get('/aboutus','App\Http\Controllers\IndexController@about_us');
@@ -87,3 +107,5 @@ Route::get('/event_details/{id}','App\Http\Controllers\IndexController@event_det
 Route::get('/course_details/{id}','App\Http\Controllers\IndexController@course_details');
 Route::get('/teacher_details/{id}','App\Http\Controllers\IndexController@teacher_details');
 Route::get('/contacts','App\Http\Controllers\IndexController@contacts');
+
+// end of front end route

@@ -4,7 +4,7 @@
 					<div class="brand flex-column-auto" id="kt_brand">
 						<!--begin::Logo-->
 						<a href="index.html" class="brand-logo">
-							<img alt="Logo" src="{{ asset('media/logos/logo-light.png') }}" />
+							<img alt="Logo" src="{{ asset('backend/media/logos/logo-light.png') }}" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toggle-->
@@ -150,7 +150,7 @@
 
 											</li>
 											<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-												<a href="manageuser.php" class="menu-link menu-toggle">
+												<a href="{{ url('register/index') }}" class="menu-link menu-toggle">
 													<i class="menu-bullet menu-bullet-line">
 														<span></span>
 													</i>

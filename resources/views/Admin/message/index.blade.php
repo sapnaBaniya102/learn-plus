@@ -59,7 +59,7 @@
                                                                     <td>{{ $messages->name }}</td>
  <td>{{ $messages->email }}</td>
   <td>{{ $messages->subject }}</td>
-   <td>{{ $messages->details }}</td>
+   <td>{{ Illuminate\Support\Str::words($messages->details, 16, '...') }}</td>
     <td>{{ $messages->phone }}</td>
 
 																</tr>
@@ -70,6 +70,13 @@
 
 																</tfoot>
 														</table>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="text-center">
+                                                                    {{ $message->links() }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
 													</div>
 													<!-- /.card-body -->
 												</div>
