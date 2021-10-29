@@ -55,14 +55,32 @@
         <div class="topbar">
             <div class="container">
                 <div class="row">
-                    <div class="text-left col-md-6">
-                        @foreach ($sites as $site)
+                    <div class="text-left col-md-9">
+                        <ul class="list-inline">
+                            <li class="col-md-12">
+                              @foreach ($sites as $site)
                         @if ($site->site_key=='logo')
-                        <p><i class="fa fa-graduation-cap"></i>{{ $site->site_value }}</p>
+                        <a class="col col-md-6"><i class="fa fa-graduation-cap"></i>{{ $site->site_value }}</a>
                         @endif
                         @endforeach
+                        @foreach ($sites as $site)
+                                @if ($site->site_key=='phone')
+
+    <a class="col col-md-2"><i class="fa fa-phone"></i>{{ $site->site_value }}</a>
+                                @endif
+
+                                @endforeach
+                                @foreach ($sites as $site)
+                                @if ($site->site_key=='email')
+     <a class="col col-md-3"><i class="fa fa-envelope-o"></i>{{ $site->site_value }}</a>
+                                @endif
+
+                                @endforeach
+                            </li>
+                        </ul>
+
                     </div>
-                    <div class="text-right col-md-6">
+                    <div class="text-right col-md-3">
                         <ul class="list-inline">
                             <li>
                                 @foreach ($sites as $site)
