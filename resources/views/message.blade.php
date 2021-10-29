@@ -10,7 +10,7 @@
             <div class="col-md-6 text-right">
                 <div class="bread">
                     <ol class="breadcrumb">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="i{{ url('index') }}">Home</a></li>
                         <li class="active">Message</li>
                     </ol>
                 </div>

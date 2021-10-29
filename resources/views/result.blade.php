@@ -9,7 +9,7 @@
             <div class="col-md-6 text-right">
                 <div class="bread">
                     <ol class="breadcrumb">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="{{ url('index') }}">Home</a></li>
 
                         <li class="active">Examination Result</li>
                     </ol>
@@ -72,7 +72,7 @@
                     <ul class="latest-tweets">
                         @foreach ($result1 as $result2)
  <li>
-                            <p><a href="{{ asset('uploads/files/'.$result2->link)  }}">{{ Illuminate\Support\Str::words($result2->name, 5, '...') }}</a></p>
+                            <p><a href="{{ asset('uploads/files/'.$result2->link)  }}" download>{{ Illuminate\Support\Str::words($result2->name, 5, '...') }}</a></p>
                             <span>{{ $result2->date }}</span>
                         </li>
                         @endforeach

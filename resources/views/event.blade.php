@@ -9,7 +9,7 @@
             <div class="text-right col-md-6">
                 <div class="bread">
                     <ol class="breadcrumb">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="{{ url('index') }}">Home</a></li>
                         <li class="active">Events</li>
                     </ol>
                 </div>

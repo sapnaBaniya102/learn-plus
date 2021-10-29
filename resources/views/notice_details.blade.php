@@ -12,7 +12,7 @@
                                 <div class="col-md-6 text-right">
                                     <div class="bread">
                                         <ol class="breadcrumb">
-                                            <li><a href="index.php">Home</a></li>
+                                            <li><a href="{{ url('index') }}">Home</a></li>
                                             <li class="active">Examination</li>
                                         </ol>
                                     </div>
@@ -55,9 +55,9 @@
                             </div>
                             <div class="twitter-widget">
                                 <ul class="latest-tweets">
-                                    @foreach ($notices as $notice)
+                                    @foreach ($notice1 as $notice2)
                             <li>
-                                <p><a href="{{ url('notice_details/'.$notice->id) }}">{{ Illuminate\Support\Str::words($notice->heading, 5, '...') }}</a></p>
+                                <p><a href="{{ url('notice_details/'.$notice2->id) }}">{{ Illuminate\Support\Str::words($notice2->heading, 5, '...') }}</a></p>
                             </li>
                             @endforeach
                                 </ul>

@@ -193,42 +193,68 @@
 </section>
 
 <section class="grey section">
-    <div class="row-fluid">
-        <div class="col-md-6 myimg">
-             @foreach ($sites as $site)
-                                @if ($site->site_key=='who-we-are')
-            <img src="{{ asset('uploads/files/'.$site->imglink) }}" alt="" srcset="" width="700" style="padding:60px;">
-            @endif
-            @endforeach
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-5">
-                    <div class="section-container nopadding">
-                        <div class="textrotate">
-                            <ul class="bxslider pl-5">
-                                @foreach ($sites as $site)
-                                @if ($site->site_key=='who-we-are')
+    <div class="container">
+        <div class="row">
+            @foreach ($sites as $site)
+            @if ($site->site_key=='who-we-are')
+            <div class="col-md-6">
+                <div class="content-widget">
+                    <div class="widget-title">
+                    </div>
+                    <div class="media-element">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="{{ asset('uploads/files/'.$site->imglink) }}" alt="" class="img-responsive">
+                                </div>
 
-
- <li>
-                                    <div class="big-title">
-                                        <h3><span>{{ $site->site_name }}</h3>
-                                        <div class="border-title"></div>
-                                    </div>
-                                    <p>{{ $site->site_value }}</p>
-                                </li>
-                                 @endif
-                                @endforeach
-
-                            </ul>
+                            </div>
+                            <a class="left carousel-control" href="myCarousel" role="button" data-slide="prev">
+                                <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="myCarousel" role="button" data-slide="next">
+                                <span class="fa fa-angle-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
+            @endforeach
+            <div class="col-md-6">
+                <div class="content-widget">
+                    <div class="widget-title">
+
+
+                    </div>
+
+
+                    @foreach ($sites as $site)
+                    @if ($site->site_key=='who-we-are')
+ <div class="tabbed-widget">
+                        <h1 class="text-center">{{ $site->site_name }}</h1>
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                <p>{{ $site->site_value }}</p>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                     @endif
+                    @endforeach
+
+                </div>
+            </div>
+
+
         </div>
     </div>
 </section>
+
 
 
 <section class="section fullscreen paralbackground parallax" style="background-image:url({{ asset('asset/upload/xparallax_02.jpg.pagespeed.ic.Sx1_qXOliB.jpg') }})" data-img-width="1627" data-img-height="868" data-diff="100">

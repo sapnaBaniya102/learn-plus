@@ -113,6 +113,9 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li class="dropdown ttmenu-half" style="background-color: #fd652b;"><a href="{{ url('admissions') }}"
+                                    >Admission </a>
+                            </li>
 
                             </ul>
 

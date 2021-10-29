@@ -114,13 +114,15 @@
     jQuery(document).ready(function() {
         jQuery('.tp-banner').show().revolution({
             dottedOverlay: "none",
-            delay: 16000,
+            // delay: 16000,
             startwidth: 1170,
             startheight: 620,
             hideThumbs: 200,
             thumbWidth: 100,
             thumbHeight: 50,
             thumbAmount: 5,
+            autoplay:true,
+ autoplayTimeout:600,
             navigationType: "none",
             navigationArrows: "solo",
             navigationStyle: "preview3",

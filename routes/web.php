@@ -39,6 +39,8 @@ Route::get('/auth/logout', 'App\Http\Controllers\LoginController@logout')->name(
 
 Route::get('/login', [LoginController::class, 'login'])->name('auth.login');
 Route::get('/register', 'App\Http\Controllers\LoginController@register')->name('admin.register');
+
+
 Route::get('/register/index', 'App\Http\Controllers\LoginController@index');
 Route::delete('/register/destroy/{admin}', 'App\Http\Controllers\LoginController@destroy');
 
@@ -50,7 +52,7 @@ Route::resource('gallery', GalleryController::class)->middleware('AuthCheck');
 
 Route::get('message', 'App\Http\Controllers\MessageController@index')->middleware('AuthCheck')->name('message.index');
 Route::post('message/store', 'App\Http\Controllers\MessageController@store')->name('message.store');
-Route::delete('message/destroy', 'App\Http\Controllers\MessageController@destroy')->name('message.destroy');
+Route::delete('message/destroy/{message}', 'App\Http\Controllers\MessageController@destroy')->name('message.destroy');
 
 Route::resource('news', NewsController::class)->middleware('AuthCheck');
 Route::resource('result', ResultsController::class)->middleware('AuthCheck');
@@ -68,7 +70,7 @@ Route::resource('course', CourseController::class)->middleware('AuthCheck');
 Route::resource('coursecat', CoursecatController::class)->middleware('AuthCheck');
 Route::get('admission', 'App\Http\Controllers\AdmissionController@index')->middleware('AuthCheck')->name('admission.index');
 Route::post('admission/store', 'App\Http\Controllers\AdmissionController@store')->name('admission.store');
-Route::delete('admission/destroy', 'App\Http\Controllers\AdmissionController@destroy')->name('admission.destroy');
+Route::delete('admission/destroy/{admission}', 'App\Http\Controllers\AdmissionController@destroy')->name('admission.destroy');
 
 // end of backend route
 // search route
@@ -90,6 +92,7 @@ Route::get('/aboutus','App\Http\Controllers\IndexController@about_us');
 Route::get('/messages','App\Http\Controllers\IndexController@messages');
 Route::get('/plannings','App\Http\Controllers\IndexController@planning');
 
+Route::get('/admissions','App\Http\Controllers\IndexController@admission');
 
 Route::get('/results','App\Http\Controllers\IndexController@results');
 Route::get('/notices','App\Http\Controllers\IndexController@notice');
